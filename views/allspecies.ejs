@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('header', {title:'Notes'}); %>
+  <body>
+    <%- include('navbar'); %>
+    <div class="container-fluid min-vh-100 h-auto">
+      <%- include('headerimg', {image:'/species.jpg', text:"All Species"}); %>
+      <div class="container">
+        <div class="row">
+          <% ejsdata.forEach((species) => { %>
+          <br />
+
+          <div class="col-sm-6 col-lg-4 col-12 p-3">
+            <div class="card bg-light">
+              <img
+                src="/species/<%= species.id %>.png"
+                class="card-img-top"
+                alt="species <%= species.id %>"
+              />
+              <div class="card-body">
+                <h5 class="card-title"><%= species.name %></h5>
+                <p class="card-text">
+                  <%= species.scientific_name %>
+                </p>
+
+                <div>
+                  <div class="d-grid col-12 mx-auto">
+                    <a
+                      class="btn btn-success"
+                      href="/species/<%= species.id %>"
+                    >
+                      Notes on <%= species.name %>
+                    </a>
+                  </div>
+                </div>
+                <div>
+                  <div class="d-grid col-12 mx-auto">
+                    <a
+                      class="btn btn-outline-secondary"
+                      href="/species/<%= species.id %>/edit"
+                    >
+                      Edit Species
+                    </a>
+                  </div>
+                </div>
+                <div>
+                  <form
+                    action="/species/<%= species.id %>?_method=DELETE"
+                    method="POST"
+                  >
+                    <div class="d-grid col-12 mx-auto">
+                      <button type="submit" class="btn btn-outline-secondary">
+                        Delete a Sighting
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <% }) %>
+        </div>
+      </div>
+    </div>
+    <%- include('footer'); %>
+  </body>
+</html>

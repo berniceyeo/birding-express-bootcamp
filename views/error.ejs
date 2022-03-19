@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('header', {title:'Error'}); %>
+  <body>
+    <%- include('navbar'); %>
+    <div class="container-fluid min-vh-100 h-auto">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12 col-sm-6 d-flex justify-content-center">
+            <img
+              src="/error.jpg"
+              alt="bird-watching"
+              width="100%"
+              height="auto"
+              style="max-width: 600px"
+            />
+          </div>
+          <div
+            class="col-12 col-sm-6 d-flex justify-content-center align-items-center"
+          >
+            <h2 class="display-3 text-danger">
+              <%= text %>
+            </h2>
+          </div>
+        </div>
+      </div>
+    </div>
+    <%- include('footer'); %>
+  </body>
+</html>

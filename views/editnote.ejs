@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('header', {title:'Notes'}); %>
+  <body>
+    <%- include('navbar'); %>
+    <div class="container-fluid min-vh-100 h-auto">
+      <%- include('headerimg', {image:'/note.jpg', text:'Edit Sighting'}); %>
+      <form
+        action="/note/<%= ejsdata.id %>?_method=PUT"
+        method="POST"
+        class="needs-validation"
+        novalidate
+      >
+        <br />
+        <br />
+        <div class="container p-3">
+          <label for="species" class="row mb-3 text-capitalize">Species</label>
+          <div class="row mb-3">
+            <select name="species" class="form-select">
+              <% species.forEach((cat) => { %>
+              <option value="<%= cat.id %>"><%= cat.name %></option>
+              <% }); %>
+            </select>
+            <div class="invalid-feedback">Enter valid species</div>
+          </div>
+
+          <label for="habitat" class="row mb-3">Habitat</label>
+          <div class="row mb-3">
+            <input
+              type="text"
+              class="form-control"
+              id="habitat"
+              name="habitat"
+              value="<%= ejsdata.habitat %>"
+              required
+            />
+            <div class="invalid-feedback">
+              Enter Valid Habitat
+            </div>
+          </div>
+
+          <label for="date_time" class="row mb-3">Date & Time</label>
+          <div class="row mb-3">
+            <input
+              type="datetime-local"
+              class="form-control"
+              id="date_time"
+              name="date_time"
+              value="<%= ejsdata.date %>"
+              required
+            />
+            <div class="invalid-feedback">
+              Enter Valid Date & Time
+            </div>
+          </div>
+
+          <label for="app" class="row mb-3">Appearance</label>
+          <div class="row mb-3">
+            <input
+              type="text"
+              class="form-control"
+              id="app"
+              name="app"
+              value="<%= ejsdata.appearance %>"
+              required
+            />
+            <div class="invalid-feedback">
+              Enter Valid Appearance
+            </div>
+          </div>
+          <label for="behaviour" class="row mb-3">Behaviour</label>
+          <div class="row mb-3">
+            <input
+              type="text"
+              class="form-control"
+              id="behaviour"
+              name="behaviour"
+              value="<%= ejsdata.behaviour %>"
+              required
+            />
+            <div class="invalid-feedback">
+              Enter Valid Behaviour
+            </div>
+          </div>
+          <label for="vocal" class="row mb-3">Vocalisations</label>
+          <div class="row mb-3">
+            <input
+              type="text"
+              class="form-control"
+              id="vocal"
+              name="vocal"
+              value="<%= ejsdata.vocalisations %>"
+              required
+            />
+            <div class="invalid-feedback">
+              Enter Valid Vocalisations
+            </div>
+          </div>
+
+          <label for="flocksize" class="row mb-3">Flock Size</label>
+          <div class="row mb-3">
+            <input
+              type="number"
+              class="form-control"
+              id="flocksize"
+              name="flocksize"
+              min="1"
+              max="1000"
+              value="<%= ejsdata.flocksize %>"
+              required
+            />
+            <div class="invalid-feedback">
+              Enter Valid flocksize
+            </div>
+          </div>
+          <div class="mt-5 mb-3 row justify-content-start">
+            <div class="d-grid jusitfy-content-start col-sm-3">
+              <button type="submit" class="btn btn-success">
+                Submit
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <%- include('footer'); %>
+  </body>
+</html>

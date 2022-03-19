@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('header', {title:'Indv Species'}); %>
+  <body>
+    <%- include('navbar'); %>
+    <div class="container-fluid min-vh-100 h-auto">
+      <div class="container-fluid bg-color">
+        <div class="row">
+          <div class="col-12 col-sm-6 d-flex justify-content-center">
+            <img
+              src="/species/<%= ejsdata[0].id %>.png"
+              alt="bird-watching"
+              width="100%"
+              height="auto"
+              style="max-width: 500px"
+            />
+          </div>
+          <div
+            class="col-12 col-sm-6 d-flex justify-content-center align-items-center"
+          >
+            <h2 class="display-3 text-white">
+              <%= ejsdata[0].name %>
+            </h2>
+          </div>
+        </div>
+      </div>
+
+      <% ejsdata.forEach((note) => { %>
+      <br />
+      <a
+        href="/note/<%= note.id %>"
+        class="text-black"
+        style="text-decoration: none;"
+      >
+        <div class="container bg-light mb-4 p-5">
+          <div class="row d-flex align-items-center">
+            <div
+              class="col-sm-6 align-self-stretch text-start text-success fw-bold fs-6 mb-1"
+            >
+              #<%= note.id %> | <%= note.date %> |
+            </div>
+          </div>
+          <div class="row d-flex align-items-center">
+            <div class="col-sm-12 fw-light fs-6"><%= note.behaviour %></div>
+          </div>
+        </div>
+      </a>
+      <% }) %>
+    </div>
+    <%- include('footer'); %>
+  </body>
+</html>

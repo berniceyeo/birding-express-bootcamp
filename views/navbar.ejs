@@ -1,0 +1,62 @@
+<ul class="nav bg-light p-3">
+  <li class="nav-item">
+    <a class="nav-link active" style="color:rgb(70, 66, 62);" href="/note/all"
+      ><img src="/bird.png" alt="bird" width="30" height="30"
+    /></a>
+  </li>
+  <li class="nav-item dropdown jusitfy-content-end">
+    <% if (typeof username==='undefined') { %>
+    <a
+      class="nav-link dropdown-toggle text-main"
+      data-bs-toggle="dropdown"
+      href="/note/all"
+      role="button"
+      aria-expanded="false"
+    >
+      User
+    </a>
+
+    <ul class="dropdown-menu">
+      <li>
+        <a class="dropdown-item text-main" href="/login">Login</a>
+      </li>
+      <li>
+        <a class="dropdown-item text-main" href="/signup">Signup</a>
+      </li>
+    </ul>
+    <% } else { %>
+    <a
+      class="nav-link dropdown-toggle text-main text-capitalize"
+      data-bs-toggle="dropdown"
+      href="/note/all"
+      role="button"
+      aria-expanded="false"
+    >
+      <%= username %>
+    </a>
+
+    <ul class="dropdown-menu">
+      <li>
+        <a class="dropdown-item text-main" href="/profile">Profile</a>
+      </li>
+
+      <li><hr class="dropdown-divider" /></li>
+      <li>
+        <a class="dropdown-item text-main" href="/logout">Logout</a>
+      </li>
+    </ul>
+    <% } %>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link active text-main" href="/species/all">All Species</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link active text-main" href="/note/all">All Notes</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link active text-main" href="/species">New Species</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link active text-main" href="/note">New Sighting</a>
+  </li>
+</ul>

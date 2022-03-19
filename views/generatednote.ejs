@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('header', {title:'Notes'}); %>
+  <body>
+    <%- include('navbar'); %>
+    <div class="container-fluid min-vh-100 h-auto">
+      <%- include('headerimg', {image:'/bird.jpg', text:"Bird Sighted"}); %> <%
+      for(const [key, value] of Object.entries(ejsdata)) { %> 
+        <% if( key==='species_id') { %>
+      <p></p>
+      <% } else if( key ==='name') { %>
+      <div class="container bg-light mt-3 mb-3">
+      <div class="row text-capitalize p-2 text-main fw-bold">
+        Species Name
+      </div>
+      <div class="row p-2">
+        <%= value %>
+      </div>
+    </div>
+    <% } else { %>
+    <div class="container bg-light mt-3 mb-3">
+      <div class="row text-capitalize p-2 text-main fw-bold">
+        <%= key %>
+      </div>
+      <div class="row p-2">
+        <%= value %>
+      </div>
+    </div>
+    <% } %> 
+    <% } %>
+
+    <div class="container mt-4">
+      <div class="mb-3 row justify-content-start">
+        <div class="col-sm-3 col-5">
+          <div class="d-grid col-12 mx-auto">
+            <a
+              class="btn btn-success"
+              href="/note/<%= ejsdata.id %>/edit"
+              role="button"
+            >
+              Edit Sighting
+            </a>
+          </div>
+        </div>
+        <div class="col-sm-3 col-5">
+          <form action="/note/<%= ejsdata.id %>?_method=DELETE" method="POST">
+            <div class="d-grid col-12 mx-auto">
+              <button type="submit" class="btn btn-success">
+                Delete a Sighting
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <%- include('footer'); %>
+  </body>
+</html>
